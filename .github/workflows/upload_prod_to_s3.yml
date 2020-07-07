@@ -1,0 +1,23 @@
+name: Sync to img.cloud.lib.vt.edu
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  s3-sync:
+    name: Sync to S3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: S3 Sync
+        uses: docker://amazon/aws-cli:2.0.28
+        with:
+          args: s3 sync . s3://${{ env.AWS_S3_BUCKET }}/sites/ --exclude "*" --include "html/*" --include "images/*" --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
+          AWS_S3_BUCKET: 'img.cloud.lib.vt.edu'
