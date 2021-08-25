@@ -1,33 +1,34 @@
 
 <h2>About This Software</h2>
 
-<p>The Virginia Tech Digital Libraries Platform (VTDLP) is a cloud-native, digital libraries solution supporting preservation and access while taking advantage of the efficiencies of Amazon Web Services. It is a collection of CloudFormation templates, code implementing microservices to support digital library functions, and web applications providing user access.  It is a free and Open Source collection of cloud configurations and microservers supporting a wide range of digital preservation, access, and digital collection management, activities.</p>
+<p>The Virginia Tech Digital Libraries Platform (VTDLP) is a cloud-native, digital libraries solution supporting preservation and access while taking advantage of the efficiencies of Amazon Web Services. It is a collection of CloudFormation templates, code implementing microservices to support digital library functions, and web applications providing user access.  It is a free and Open Source collection of cloud configurations and microservices supporting a wide range of digital preservation, access, and digital collection management, activities.</p>
 
-<p>For more information:
+<p>For more information:</p>
 <ul>
-<li>See our <a href='https://vtdlp-demo.cloud.lib.vt.edu/'>demo site</a> or an <a a href='https://iawa.lib.vt.edu/'>existing digital library</a></li>
-<li>Visit our <a href='https://github.com/vt-digital-libraries-platform/'>Github</a></li>
-<li>View our <a href='https://github.com/VTUL/dlp-access/wiki'>documentation</a></li>
-<li>Partner with us by <a href='https://github.com/VTUL/dlp-access/blob/dev/CONTRIBUTING.md'>contributing</a></li>
+  <li>See our <a href='https://vtdlp-demo.cloud.lib.vt.edu/'>demo site</a> or an <a href='https://iawa.lib.vt.edu/'>existing digital library</a></li>
+  <li>Visit our <a href='https://github.com/vt-digital-libraries-platform/'>Github</a></li>
+  <li>View our <a href='https://github.com/VTUL/dlp-access/wiki'>documentation</a></li>
+  <li>Partner with us by <a href='https://github.com/VTUL/dlp-access/blob/dev/CONTRIBUTING.md'>contributing</a></li>
 </ul>
-</p>
+
 
 <h2>Conceptual Overview</h2>
 
-<p>#todo: Describe how it works.  E.g., apmlify frontend applications call metadata stored in DynamoDB and assets stored in S3, etc.</p>
+<p>#todo: Describe how it works.  E.g., amplify frontend applications call metadata stored in DynamoDB and assets stored in S3, etc.</p>
 
-<h2>Infrastucture Overview</h2>
+<h2>Infrastructure Overview</h2>
 
-<img src="/home/jjt/Projects/VTDLP-sitecontent/images/vtdlp/VTDLP_overview.png" alt="AWS Infrastructure Overview" class="center" width="800" height="600">
-<p><h3>Components</h3>
-<ul>
+<img src="https://collectionmap125018-newdev.s3.amazonaws.com/public/sitecontent/image/federated/VTDLP_overview.png" alt="AWS Infrastructure Overview" class="center" style="width: 100%;height: auto;">
+<br>
+<h3>Components</h3>
+<ul style="list-style-type: disc; padding: revert">
   <li>Access service
-    <ul>
+    <ul style="list-style-type: disc; padding: revert">
       <li><a href="https://iawa.lib.vt.edu/">IAWA</a></li>
     </ul>
   </li>
   <li>Derivative service
-    <ul>
+    <ul style="list-style-type: disc; padding: revert">
       <li>IIIF tile &amp; manifest: <a href="https://github.com/vt-digital-libraries-platform/aws-batch-iiif-generator">aws-batch-iiif-generator</a></li>
     </ul>
   </li>
@@ -35,13 +36,46 @@
   <li>ID Minting service: <a href="https://github.com/vt-digital-libraries-platform/mint">DLP ID Minting Service</a></li>
   <li>Fixity services: <a href="https://github.com/vt-digital-libraries-platform/FixityService">DLP Fixity Service</a></li>
   <li>Ingestion services: <a href="https://github.com/vt-digital-libraries-platform/S3toDDB">DLP metadata ingestion</a></li>
+  <li>Lambda functions
+    <ul style="list-style-type: disc; padding: revert">
+      <li><a href="https://github.com/vt-digital-libraries-platform/S3toDDB">S3toDDB</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/dlp-access-lambdas">dlp-access-lambdas</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/lambda_layers">DLP Lambda layers</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/DDBtoDDB">DDBtoDDB</a></li>
+    </ul>
+  </li>
+  <li>Microservices
+    <ul style="list-style-type: disc; padding: revert">
+      <li><a href="https://github.com/vt-digital-libraries-platform/resolution-service">DLP Resolution Service</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/mint">ID Minting Service</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/aws-batch-iiif-generator">aws-batch-iiif-generator</a></li>
+      <li><a href="https://github.com/vt-digital-libraries-platform/FixityService">Fixity Service</a></li>
+    </ul>
+  </li>
+  <li>Python package
+    <ul style="list-style-type: disc; padding: revert">
+      <li><a href="https://github.com/vt-digital-libraries-platform/NOID-mint">NOID-mint</a></li>
+    </ul>
+  </li>
+  <li>Batch program
+    <ul style="list-style-type: disc; padding: revert">
+      <li><a href="https://github.com/VTUL/iiif_s3_tools/tree/master/Batch_task_json_generator">AWS Batch Task JSON Generator</a></li>
+      <li><a href="https://github.com/VTUL/iiif_s3_tools/tree/master/index_csv_generator">Index CSV Generator</a></li>
+    </ul>
+  </li>
+  <li>Docker image
+    <ul style="list-style-type: disc; padding: revert">
+      <li><a href="https://github.com/vt-digital-libraries-platform/iiif_s3_docker">IIIF_S3 docker</a></li>
+    </ul>
+  </li>
 </ul>
-
-<table>
+<br>
+<h3 id="summary">Services Summary</h3>
+<table aria-labelledby="summary">
   <thead>
     <tr>
       <th> </th>
-      <th style="text-align: center">Count</th>
+      <th style="text-align: center" scope="col">Count</th>
     </tr>
   </thead>
   <tbody>
@@ -67,40 +101,4 @@
     </tr>
   </tbody>
 </table>
-
-<ul>
-  <li>Lambda functions
-    <ul>
-      <li><a href="https://github.com/vt-digital-libraries-platform/S3toDDB">S3toDDB</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/dlp-access-lambdas">dlp-access-lambdas</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/lambda_layers">DLP Lambda layers</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/DDBtoDDB">DDBtoDDB</a></li>
-    </ul>
-  </li>
-  <li>Microservices
-    <ul>
-      <li><a href="https://github.com/vt-digital-libraries-platform/resolution-service">DLP Resolution Service</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/mint">ID Minting Service</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/aws-batch-iiif-generator">aws-batch-iiif-generator</a></li>
-      <li><a href="https://github.com/vt-digital-libraries-platform/FixityService">Fixity Service</a></li>
-    </ul>
-  </li>
-  <li>Python package
-    <ul>
-      <li><a href="https://github.com/vt-digital-libraries-platform/NOID-mint">NOID-mint</a></li>
-    </ul>
-  </li>
-  <li>Batch program
-    <ul>
-      <li><a href="https://github.com/VTUL/iiif_s3_tools/tree/master/Batch_task_json_generator">AWS Batch Task JSON Generator</a></li>
-      <li><a href="https://github.com/VTUL/iiif_s3_tools/tree/master/index_csv_generator">Index CSV Generator</a></li>
-    </ul>
-  </li>
-  <li>Docker image
-    <ul>
-      <li><a href="https://github.com/vt-digital-libraries-platform/iiif_s3_docker">IIIF_S3 docker</a></li>
-    </ul>
-  </li>
-</ul>
-</p>
 
